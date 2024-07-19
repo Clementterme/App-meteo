@@ -1,5 +1,5 @@
 import Image from "next/image";
-import { ctoF } from "../services/converters";
+import { ctoF, convertWeatherCodeToIcon } from "../services/converters";
 import styles from "./MainCard.module.css";
 
 export const MainCard = ({
@@ -15,7 +15,7 @@ export const MainCard = ({
       <h1 className={styles.location}>
         {city}, {country}
       </h1>
-      <p className={styles.description}>{description}</p>
+      <p className={styles.description}>{convertWeatherCodeToIcon(description)}</p>
       <Image
         width="300px"
         height="300px"
@@ -24,15 +24,15 @@ export const MainCard = ({
       />
       <h1 className={styles.temperature}>
         {unitSystem == "metric"
-          ? Math.round(weatherData.main.temp)
-          : Math.round(ctoF(weatherData.main.temp))}
+          ? Math.round(weatherData.hourly.temperature_2m[0])
+          : Math.round(ctoF(weatherData.hourly.temperature_2m[0]))}
         °{unitSystem == "metric" ? "C" : "F"}
       </h1>
       <p>
-        Feels like{" "}
+        Ressenti :{" "}
         {unitSystem == "metric"
-          ? Math.round(weatherData.main.feels_like)
-          : Math.round(ctoF(weatherData.main.feels_like))}
+          ? Math.round(weatherData.hourly.apparent_temperature[0])
+          : Math.round(ctoF(weatherData.hourly.apparent_temperature[0]))}
         °{unitSystem == "metric" ? "C" : "F"}
       </p>
     </div>

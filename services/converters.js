@@ -1,5 +1,11 @@
 export const ctoF = (c) => (c * 9) / 5 + 32;
 
+export function convertWeatherCodeToIcon(weatherCode) {
+  if (weatherCode == 0) { 
+    return "sunny";
+  }
+}
+
 export const mpsToMph = (mps) => (mps * 2.236936).toFixed(2);
 
 export const kmToMiles = (km) => (km / 1.609).toFixed(1);

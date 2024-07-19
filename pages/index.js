@@ -40,17 +40,21 @@ export const App = () => {
   return weatherData && !weatherData.message ? (
     <div className={styles.wrapper}>
       <MainCard
-        city={weatherData.name}
-        country={weatherData.sys.country}
-        description={weatherData.weather[0].description}
-        iconName={weatherData.weather[0].icon}
+        // city={weatherData.name}
+        city={weatherData.latitude}
+        // country={weatherData.sys.country}
+        country={weatherData.longitude}
+        // description={weatherData.weather[0].description}
+        description={weatherData.hourly.weather_code[0]}
+        // iconName={weatherData.weather[0].icon}
+        iconName={weatherData.hourly.weather_code[0]}
         unitSystem={unitSystem}
         weatherData={weatherData}
       />
       <ContentBox>
         <Header>
           <DateAndTime weatherData={weatherData} unitSystem={unitSystem} />
-          <Search
+          {/* <Search
             placeHolder="Search a city..."
             value={cityInput}
             onFocus={(e) => {
@@ -62,7 +66,7 @@ export const App = () => {
               e.keyCode === 13 && setTriggerFetch(!triggerFetch);
               e.target.placeholder = "Search a city...";
             }}
-          />
+          /> */}
         </Header>
         <MetricsBox weatherData={weatherData} unitSystem={unitSystem} />
         <UnitSwitch onClick={changeSystem} unitSystem={unitSystem} />
@@ -77,7 +81,7 @@ export const App = () => {
       />
     </ErrorScreen>
   ) : (
-    <LoadingScreen loadingMessage="Loading data..." />
+    <LoadingScreen loadingMessage="Chargement..." />
   );
 };
 
