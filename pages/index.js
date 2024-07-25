@@ -69,7 +69,7 @@ export const App = () => {
           /> */}
         </Header>
         <MetricsBox weatherData={weatherData} unitSystem={unitSystem} />
-        <UnitSwitch onClick={changeSystem} unitSystem={unitSystem} />
+        {/* <UnitSwitch onClick={changeSystem} unitSystem={unitSystem} /> */}
       </ContentBox>
     </div>
   ) : weatherData && weatherData.message ? (

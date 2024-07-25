@@ -39,3 +39,38 @@ export const getWeekDay = (weatherData) => {
     new Date((weatherData.dt + weatherData.timezone) * 1000).getUTCDay()
   ];
 };
+
+// Afficher la date du jour au format FR
+export function getDayName(dayIndex) {
+  const days = ['Dimanche', 'Lundi', 'Mardi', 'Mercredi', 'Jeudi', 'Vendredi', 'Samedi'];
+  return days[dayIndex];
+}
+
+export function getMonthName(monthIndex) {
+  const months = ['janvier', 'février', 'mars', 'avril', 'mai', 'juin', 'juillet', 'août', 'septembre', 'octobre', 'novembre', 'décembre'];
+  return months[monthIndex];
+}
+
+export function displayDate() {
+  const today = new Date();
+  const dayName = getDayName(today.getDay());
+  const day = today.getDate();
+  const monthName = getMonthName(today.getMonth());
+  let t = setTimeout(displayDate, 10000);
+  return `${dayName} ${day} ${monthName}`;
+}
+
+export function startTime() {
+  let today = new Date();
+  let h = today.getHours();
+  let m = today.getMinutes();
+  m = checkTime(m);
+  let t = setTimeout(startTime, 10000);
+  return h + ":" + m;
+}
+export function checkTime(i) {
+  if (i < 10) {
+    i = "0" + i;
+  } // Ajoute un 0 devant les minutes < 10
+  return i;
+}
