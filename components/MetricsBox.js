@@ -14,25 +14,25 @@ export const MetricsBox = ({ weatherData, unitSystem }) => {
       <MetricsCard
         title={"Ressenti"}
         iconSrc={"/icons/thermometer.png"}
-        metric={weatherData.hourly.apparent_temperature[0]}
+        metric={weatherData.current.apparent_temperature}
         unit={"°C"}
       />
       <MetricsCard
         title={"Vent"}
         iconSrc={"/icons/wind.png"}
-        metric={weatherData.hourly.wind_speed_10m[0]}
+        metric={weatherData.current.wind_speed_10m}
         unit={"km/h"}
       />
       <MetricsCard
         title={"Précipitations"}
         iconSrc={"/icons/precipitation.png"}
-        metric={weatherData.hourly.precipitation_probability[0]}
+        metric={weatherData.current.precipitation}
         unit={"%"}
       />
       <MetricsCard
         title={"Humidité"}
         iconSrc={"/icons/humidity.png"}
-        metric={weatherData.hourly.relative_humidity_2m[0]}
+        metric={weatherData.current.relative_humidity_2m}
         unit={"%"}
       />
       {/* <MetricsCard

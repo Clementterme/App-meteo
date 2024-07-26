@@ -45,9 +45,9 @@ export const App = () => {
         // country={weatherData.sys.country}
         country={weatherData.longitude}
         // description={weatherData.weather[0].description}
-        description={weatherData.hourly.weather_code[0]}
+        description={weatherData.current.weather_code}
         // iconName={weatherData.weather[0].icon}
-        iconName={weatherData.hourly.weather_code[0]}
+        iconName={weatherData.current.weather_code}
         unitSystem={unitSystem}
         weatherData={weatherData}
       />

@@ -23,7 +23,7 @@ export const MainCard = ({
         alt="weatherIcon"
       />
       <h1 className={styles.temperature}>
-        {Math.round(weatherData.hourly.temperature_2m[0])
+        {Math.round(weatherData.current.temperature_2m)
         }
         °C
       </h1>
