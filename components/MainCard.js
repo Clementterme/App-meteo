@@ -4,16 +4,14 @@ import styles from "./MainCard.module.css";
 
 export const MainCard = ({
   city,
-  country,
   description,
   iconName,
-  unitSystem,
   weatherData,
 }) => {
   return (
     <div className={styles.wrapper}>
       <h1 className={styles.location}>
-        {city}, {country}
+        {city}
       </h1>
       <p className={styles.description}>{weatherCodeToIcon(description)}</p>
       <Image
@@ -27,11 +25,6 @@ export const MainCard = ({
         }
         °C
       </h1>
-      {/* <p>
-        Ressenti :{" "}
-        {Math.round(weatherData.hourly.apparent_temperature[0])}
-        °C
-      </p> */}
     </div>
   );
 };

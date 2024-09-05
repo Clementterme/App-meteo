@@ -73,8 +73,8 @@ export const App = () => {
   return weatherData && cityData && !weatherData.message ? (
     <div className={styles.wrapper}>
       <MainCard
-        city={weatherData.latitude}
-        country={cityData.results[0].latitude}
+        city={cityData.results[0].name}
+        country={cityData.results[0].name}
         description={weatherData.current.weather_code}
         iconName={weatherData.current.weather_code}
         unitSystem={unitSystem}

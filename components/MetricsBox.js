@@ -35,30 +35,6 @@ export const MetricsBox = ({ weatherData, unitSystem }) => {
         metric={weatherData.current.relative_humidity_2m}
         unit={"%"}
       />
-      {/* <MetricsCard
-        title={"Sunrise"}
-        iconSrc={"/icons/sunrise.png"}
-        metric={getTime(
-          unitSystem,
-          weatherData.timezone_abbreviation,
-          weatherData.timezone
-        )}
-        unit={getAMPM(
-          unitSystem,
-          weatherData.timezone_abbreviation,
-          weatherData.timezone
-        )}
-      /> */}
-      {/* <MetricsCard
-        title={"Sunset"}
-        iconSrc={"/icons/sunset.png"}
-        metric={getTime(
-          unitSystem,
-          weatherData.timezone_abbreviation,
-          weatherData.timezone
-        )}
-        unit={getAMPM(unitSystem, weatherData.timezone_abbreviation, weatherData.timezone)}
-      /> */}
     </div>
   );
 };
