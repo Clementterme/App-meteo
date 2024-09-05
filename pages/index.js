@@ -1,3 +1,5 @@
+"use client";
+
 import { useState, useEffect } from "react";
 
 import { MainCard } from "../components/MainCard";
@@ -13,37 +15,79 @@ import { ErrorScreen } from "../components/ErrorScreen";
 import styles from "../styles/Home.module.css";
 
 export const App = () => {
-  const [cityInput, setCityInput] = useState("Riga");
+  // const [cityInput, setCityInput] = useState();
+  const [cityLatitude, setCityLatitude] = useState();
+  const [cityLongitude, setCityLongitude] = useState();
   const [triggerFetch, setTriggerFetch] = useState(true);
+  const [triggerFetch2, setTriggerFetch2] = useState(true);
   const [weatherData, setWeatherData] = useState();
+  const [cityData, setCityData] = useState();
   const [unitSystem, setUnitSystem] = useState("metric");
 
   useEffect(() => {
-    const getData = async () => {
-      const res = await fetch("api/data", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ cityInput }),
-      });
-      const data = await res.json();
-      setWeatherData({ ...data });
-      setCityInput("");
-    };
-    getData();
+    getCityData();
   }, [triggerFetch]);
+
+  const getCityData = async () => {
+    const cityRes = await fetch("api/cityData", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      // body: JSON.stringify({ cityInput }),
+    });
+    const cData = await cityRes.json();
+    setCityData({ ...cData });
+
+    const latitude = cData.results[0].latitude;
+
+    const longitude = cData.results[0].longitude;
+
+    setCityLatitude(latitude);
+    setCityLongitude(longitude);
+  };
+
+  // };
+  // getCityData();
+  // }, [triggerFetch]);
+
+  // getCityData();
+  console.log(process.env.CITY);
+  // console.log(cityLongitude);
+
+  useEffect(() => {
+    if (cityLatitude && cityLongitude) {
+      const getData = async () => {
+        const res = await fetch("api/data", {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            latitude: cityLatitude,
+            longitude: cityLongitude,
+          }),
+        });
+        // console.log(cityInput);
+
+        const data = await res.json();
+        setWeatherData({ ...data });
+      };
+      getData();
+    }
+  }, [cityLatitude, cityLongitude]);
+  // setCityInput("");
+
+  // getCityData();
 
   const changeSystem = () =>
     unitSystem == "metric"
       ? setUnitSystem("imperial")
       : setUnitSystem("metric");
 
-  return weatherData && !weatherData.message ? (
+  return weatherData && cityData && !weatherData.message ? (
     <div className={styles.wrapper}>
       <MainCard
         // city={weatherData.name}
         city={weatherData.latitude}
         // country={weatherData.sys.country}
-        country={weatherData.longitude}
+        country={cityData.results[0].latitude}
         // description={weatherData.weather[0].description}
         description={weatherData.current.weather_code}
         // iconName={weatherData.weather[0].icon}
@@ -73,12 +117,12 @@ export const App = () => {
       </ContentBox>
     </div>
   ) : weatherData && weatherData.message ? (
-    <ErrorScreen errorMessage="City not found, try again!">
-      <Search
+    <ErrorScreen errorMessage="Ville non trouvée, veuillez réessayer!">
+      {/* <Search
         onFocus={(e) => (e.target.value = "")}
         onChange={(e) => setCityInput(e.target.value)}
         onKeyDown={(e) => e.keyCode === 13 && setTriggerFetch(!triggerFetch)}
-      />
+      /> */}
     </ErrorScreen>
   ) : (
     <LoadingScreen loadingMessage="Chargement..." />
