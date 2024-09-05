@@ -19,8 +19,10 @@ export const App = () => {
   const [cityData, setCityData] = useState();
   const [unitSystem, setUnitSystem] = useState("metric");
 
+
+  // Raffraichissement des données toutes les heures
   useEffect(() => {
-    getCityData();
+    const interval = setInterval(getCityData(), 3600000);
   }, []);
 
   // Premier fetch pour récupérer les coordonnées de la ville entrée dans le fichier .env.local
@@ -36,10 +38,7 @@ export const App = () => {
     setCityLatitude(cData.results[0].latitude);
 
     setCityLongitude(cData.results[0].longitude);
-  };
-
-  console.log(cityLatitude, cityLongitude);
-  
+  };  
 
   // Récupère les données météos de la ville demandée
   useEffect(() => {

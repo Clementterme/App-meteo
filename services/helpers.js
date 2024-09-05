@@ -56,7 +56,7 @@ export function displayDate() {
   const dayName = getDayName(today.getDay());
   const day = today.getDate();
   const monthName = getMonthName(today.getMonth());
-  let t = setTimeout(displayDate, 10000);
+  let t = setTimeout(displayDate, 60000);
   return `${dayName} ${day} ${monthName}`;
 }
 
@@ -65,7 +65,7 @@ export function startTime() {
   let h = today.getHours();
   let m = today.getMinutes();
   m = checkTime(m);
-  let t = setTimeout(startTime, 10000);
+  let t = setTimeout(startTime, 60000);
   return h + ":" + m;
 }
 export function checkTime(i) {
