@@ -1,7 +1,6 @@
 "use client";
 
 export default async function handler(req, res) {
-  const cityData  = req.body;
   const cityName = process.env.CITY;
   const getCityData = await fetch(
     // `https://geocoding-api.open-meteo.com/v1/search?name=grenoble&count=1&language=fr&format=json`,

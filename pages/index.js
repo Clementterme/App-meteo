@@ -15,14 +15,13 @@ import styles from "../styles/Home.module.css";
 export const App = () => {
   const [cityLatitude, setCityLatitude] = useState();
   const [cityLongitude, setCityLongitude] = useState();
-  const [triggerFetch, setTriggerFetch] = useState(true);
   const [weatherData, setWeatherData] = useState();
   const [cityData, setCityData] = useState();
   const [unitSystem, setUnitSystem] = useState("metric");
 
   useEffect(() => {
     getCityData();
-  }, [triggerFetch]);
+  }, []);
 
   // Premier fetch pour récupérer les coordonnées de la ville entrée dans le fichier .env.local
   const getCityData = async () => {
@@ -34,14 +33,13 @@ export const App = () => {
 
     setCityData({ ...cData });
 
-    const latitude = cData.results[0].latitude;
+    setCityLatitude(cData.results[0].latitude);
 
-    const longitude = cData.results[0].longitude;
-
-    setCityLatitude(latitude);
-
-    setCityLongitude(longitude);
+    setCityLongitude(cData.results[0].longitude);
   };
+
+  console.log(cityLatitude, cityLongitude);
+  
 
   // Récupère les données météos de la ville demandée
   useEffect(() => {
@@ -74,7 +72,7 @@ export const App = () => {
     <div className={styles.wrapper}>
       <MainCard
         city={cityData.results[0].name}
-        country={cityData.results[0].name}
+        country={cityData.results[0].country}
         description={weatherData.current.weather_code}
         iconName={weatherData.current.weather_code}
         unitSystem={unitSystem}
