@@ -6,7 +6,6 @@ export default async function handler(req, res) {
 
   const getWeatherData = await fetch(
     `https://api.open-meteo.com/v1/forecast?latitude=${latitude}&longitude=${longitude}&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&forecast_days=1`,
-    // `https://api.open-meteo.com/v1/forecast?latitude=45.17869&longitude=5.7148&current=temperature_2m,relative_humidity_2m,apparent_temperature,precipitation,weather_code,wind_speed_10m&forecast_days=1`,
     {
       method: "GET",
       headers: {
