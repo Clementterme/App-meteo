@@ -1,47 +1,44 @@
 # Application météo
 
-Check the current weather on any city on the planet. Switch between metric and imperial units.
+Cette application permet d'obtenir les informations météorologiques d'une ville en entrant le nom de la ville dans un fichier .env.local  
 
-![Alt img](https://images.ctfassets.net/zlsyc9paq6sa/3uBrJ07WSM40FpolgjInHY/7d886cb4187b52194bf9b63c183a1d3a/1627637330_x.gif)
+L'objectif de ce projet était de récupérer un projet existant qui fournissait les informations météorologiques d'une ville en utilisant l'API de https://openweathermap.org/, et de changer d'API pour utiliser celle de https://open-meteo.com/.  
 
-## Features
+Je suis partit de ce projet : https://github.com/madzadev/weather-app  
 
-1. User's ability to search cities
+## Fonctionnalités  
 
-2. Current local time and date
+1. Entrer le nom de n'importe quelle ville 
 
-3. Temperatures and humidity
+2. Température et température ressentie  
 
-4. Wind speed and direction
+3. Précipitations, humidité et vitesse du vent  
 
-5. Sunrise and sunset times
+4. Date et heure  
 
-6. Metric vs Imperial system
+5. Icone définissant le temps actuel  
 
-7. Error handling and loading info
+6. Rafraichissement des données toutes les heures  
 
-## Installation
+## Installation  
 
-1. `git clone https://github.com/madzadev/weather-app.git`
+- Renommer le fichier `.env.example` en `.env.local`  
+- Entrez le nom de la ville dans le fichier `.env.local`
+- Faites la commande `npm install` puis lancez le projet avec la commande `npm run dev`  
 
-2. `cd weather-app`
+-> Il se peut que le projet ne se lance pas si vous n'avez pas la bonne version de Node.js, mais nvm permet de changer de version rapidement avec les commandes suivantes :
+- `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash`
+- `export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm`  
+- `nvm install 14`
+- `npm run dev`  
 
-3. `npm install`
+Le projet est lancé, vous pouvez consulter les informations météo de la ville indiquée dans le fichier `.env.local`  
 
-4. Log-in to [Openweathermap.com](https://openweathermap.org/)
+-> Si vous souhaitez changer de ville, modifier le nom de la ville dans le fichier `.env.local`, puis relancez le projet : 
+- CTRL + C pour mettre fin à la commande précédente  
+- De nouveau `npm run dev` pour relancer le projet  
 
-5. Create an API key
+Le projet doit être relancé pour prendre en compte les modifications faites dans le fichier `.env.local`  
 
-6. `cp .env.example .env.local`
 
-7. Paste API key for `OPENWEATHER_API_KEY`
-
-8. `npm run dev`
-
-## Contributions
-
-Any feature requests and pull requests are welcome!
-
-## License
-
-The project is under [MIT license](https://choosealicense.com/licenses/mit/).
