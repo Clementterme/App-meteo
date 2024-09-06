@@ -6,6 +6,8 @@ L'objectif de ce projet était de récupérer un projet existant qui fournissait
 
 Je suis partit de ce projet : https://github.com/madzadev/weather-app  
 
+Voici le lien de ma maquette : https://www.figma.com/design/LUBenpUD4TMxOaWEVmxOLa/Application-m%C3%A9t%C3%A9o?node-id=0-1&t=P020aPxFlCB3dULs-1  
+
 ## Fonctionnalités  
 
 1. Entrer le nom de n'importe quelle ville 
@@ -26,7 +28,7 @@ Je suis partit de ce projet : https://github.com/madzadev/weather-app
 - Entrez le nom de la ville dans le fichier `.env.local`
 - Faites la commande `npm install` puis lancez le projet avec la commande `npm run dev`  
 
--> Il se peut que le projet ne se lance pas si vous n'avez pas la bonne version de Node.js, mais nvm permet de changer de version rapidement avec les commandes suivantes :
+-> Il se peut que le projet ne se lance pas si vous n'avez pas la bonne version de Node.js, mais nvm permet de changer de version rapidement, vous pouvez passer à la version 14 avec les commandes suivantes :
 - `curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.7/install.sh | bash`
 - `export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm`  
@@ -40,5 +42,3 @@ Le projet est lancé, vous pouvez consulter les informations météo de la ville
 - De nouveau `npm run dev` pour relancer le projet  
 
 Le projet doit être relancé pour prendre en compte les modifications faites dans le fichier `.env.local`  
-
-
